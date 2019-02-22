@@ -11,7 +11,7 @@
       <mat-form-field [floatLabel]="'always'" class="full-width form-field">
         <input matInput placeholder="com.anagog.newapp"
                formControlName="appName" id="appNameMatcher"
-               (focus)="onFocus(appName)" [errorStateMatcher]="appMatcher" />
+               (focus)="onFocus(appName)" [errorStateMatcher]="appNameMatcher" />
         <mat-error
                    *ngIf="appName.getError('matchName') && !appName.hasError('required')">
           This app name is not match
