@@ -1,4 +1,5 @@
 <ag-base-layout [title]="'Edit configuration'">
+  <h2 class="app-title">Configuration for app {{ title }}</h2>
   <ag-edit-configuration-form [pending]="isLoading" (upload)="onUpload($event)" (submitted)="onSave($event)"
                               [configuration]="configuration">
     <div class="form-button-wrapper form-button-wrapper--left">
