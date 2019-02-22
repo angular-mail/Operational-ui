@@ -4,16 +4,14 @@ import {
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
     MatIconModule,
-    MatToolbarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     MAT_FORM_FIELD_DEFAULT_OPTIONS,
     MatSelectModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRippleModule
 } from '@angular/material';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 
@@ -21,16 +19,14 @@ const MODULES = [
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
     MatIconModule,
-    MatToolbarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     MatSelectModule,
     MatSnackBarModule,
     ScrollDispatchModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRippleModule
 ];
 
 @NgModule({

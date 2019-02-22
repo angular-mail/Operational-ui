@@ -1,8 +1,8 @@
 
 <div #container class="users-container-wrapper">
   <h4>Users</h4>
-  <cdk-virtual-scroll-viewport itemSize="25" class="users-container mat-elevation-z4">
-    <div *cdkVirtualFor="let user of users" class="user-item"
+  <cdk-virtual-scroll-viewport itemSize="26" class="users-container mat-elevation-z4">
+    <div mat-ripple *cdkVirtualFor="let user of users" class="user-item"
          [class.is-active]="activeItemId === user.id"
          (click)="onUserClick(user.id)">
       <div>{{user.name}}</div>

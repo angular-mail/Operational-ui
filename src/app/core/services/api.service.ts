@@ -10,7 +10,7 @@ import {InformService} from './inform.service';
 
 @Injectable({providedIn: 'root'})
 export class ApiService {
-    timeout = 150;
+    timeout = 200;
     formatErrors = this.formatErrorsFn.bind(this);
     constructor(private http: HttpClient, private informService: InformService) {}
 
