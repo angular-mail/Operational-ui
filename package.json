@@ -7,15 +7,18 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e",
-        "precommit": "lint-staged"
+        "e2e": "ng e2e"
     },
     "lint-staged": {
         "*.{ts,js,json,scss,css}": [
             "prettier --write",
-            "npm run lint",
             "git add"
         ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     },
     "private": true,
     "dependencies": {
@@ -32,7 +35,9 @@
         "core-js": "^2.5.4",
         "file-saver": "^2.0.1",
         "hammerjs": "^2.0.8",
+        "husky": "^1.3.1",
         "jszip": "^3.1.5",
+        "lint-staged": "^8.1.4",
         "prettier": "^1.16.4",
         "reset.scss": "^1.0.0",
         "rxjs": "~6.3.3",
