@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  max-width: 100%;
+}

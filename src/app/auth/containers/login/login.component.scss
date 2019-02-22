@@ -1,0 +1,8 @@
+@import 'app';
+
+:host {
+  flex: 1 1 auto;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+}

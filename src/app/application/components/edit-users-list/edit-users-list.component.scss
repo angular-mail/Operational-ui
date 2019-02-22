@@ -1,0 +1,47 @@
+@import 'app';
+
+:host {
+  flex: 1 0 40rem;
+  display: flex;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
+}
+
+.users-container-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.users-container {
+  flex: 1 1 auto;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+    height: 40rem;
+  }
+}
+
+h4 {
+  padding: 1.5rem;
+}
+
+.user-item {
+  height: 3rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $blue-gray;
+  }
+
+  &.is-active {
+    background-color: $light-blue-gray;
+  }
+}

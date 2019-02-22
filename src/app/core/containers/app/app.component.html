@@ -1,0 +1,7 @@
+<div class="app-wrapper">
+    <ag-navbar (logout)="onLogout()"
+        [user]="user$ | async" class="mat-elevation-z6"></ag-navbar>
+    <router-outlet></router-outlet>
+    <ag-footer></ag-footer>
+</div>
+<ag-loader *ngIf="isShowLoader"></ag-loader>

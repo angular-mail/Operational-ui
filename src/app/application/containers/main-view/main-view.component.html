@@ -1,0 +1,9 @@
+<ag-base-layout [title]="title">
+    <ag-application-form
+    [state]="state"
+    [appForm]="appForm"
+    (buttonClick)="onButtonClick($event)"
+    (upload)="onUpload($event)"
+    [applications]="applications">
+  </ag-application-form>
+</ag-base-layout>

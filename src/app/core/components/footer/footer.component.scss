@@ -1,0 +1,12 @@
+@import 'app';
+
+:host {
+  background-color: $primary;
+  display: block;
+  margin-top: auto;
+}
+
+footer {
+  color: $white;
+  font-size: 1.4rem;
+}

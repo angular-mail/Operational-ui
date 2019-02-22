@@ -1,0 +1,40 @@
+@import 'app';
+
+:host {
+  flex: 1 1 auto;
+  display: flex;
+  ::ng-deep {
+    .page-container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.app-name {
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem 0 4rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.edit-users-layout {
+  flex: 1 1 auto;
+  display: flex;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
+
+  ::ng-deep {
+    .cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper {
+      max-width: 100%;
+    }
+  }
+}
+
+.control-container {
+  flex: 1 1 60%;
+  display: flex;
+}

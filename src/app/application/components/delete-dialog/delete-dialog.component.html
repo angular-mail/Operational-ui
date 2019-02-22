@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <h2 class="title" mat-dialog-title>Are you sure?</h2>
+  <mat-dialog-content>
+    <div class="content">
+      <p>Are you sure you want to delete app?</p>
+      <p>If so type name of the app and press delete button
+        <ng-container *ngIf="name">
+          ({{ name }})
+        </ng-container>
+      </p>
+      <mat-form-field [floatLabel]="'always'" class="full-width form-field">
+        <input matInput placeholder="com.anagog.newapp"
+               formControlName="appName" id="appNameMatcher"
+               (focus)="onFocus(appName)" [errorStateMatcher]="appMatcher" />
+        <mat-error
+                   *ngIf="appName.getError('matchName') && !appName.hasError('required')">
+          This app name is not match
+        </mat-error>
+        <mat-error *ngIf="appName.hasError('required')">
+          App name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button mat-button mat-raised-button type="submit" color="warn">Delete Application</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </div>
+</form>

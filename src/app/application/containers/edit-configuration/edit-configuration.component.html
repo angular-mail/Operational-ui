@@ -1,0 +1,9 @@
+<ag-base-layout [title]="'Edit configuration'">
+  <ag-edit-configuration-form [pending]="isLoading" (upload)="onUpload($event)" (submitted)="onSave($event)"
+                              [configuration]="configuration">
+    <div class="form-button-wrapper form-button-wrapper--left">
+      <button type="submit" (click)="onBackButtonClick()"
+              mat-raised-button>Back</button>
+    </div>
+  </ag-edit-configuration-form>
+</ag-base-layout>

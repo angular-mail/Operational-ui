@@ -1,0 +1,112 @@
+<form [formGroup]="appForm">
+  <!-- select-app -->
+  <div class="form-row">
+    <div class="form-row__item form-row__item--label">
+      <h4>Application Name</h4>
+    </div>
+    <div class="form-row__item form-row__item--body">
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Select Application..."
+                    formControlName="selectedApp">
+          <mat-option *ngFor="let app of applications" [value]="app">
+            {{app.AppName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-row__item orm-row__item--last">
+
+      <button *ngIf="!state.selectedApp; else deleteButton" mat-button
+              mat-raised-button color="primary" (click)="onButtonClick('create')">
+        Create new
+      </button>
+      <ng-template #deleteButton>
+        <button mat-button mat-raised-button color="warn" (click)="onButtonClick('delete')">
+          Delete Application
+        </button>
+      </ng-template>
+    </div>
+  </div>
+  <!-- select-end app -->
+  <ng-container *ngIf="state.selectedApp">
+    <!-- version -->
+    <div class="form-row">
+      <div class="form-row__item form-row__item--label">
+        <h4>Version</h4>
+      </div>
+      <div class="form-row__item form-row__item--body">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Select Application..."
+                      formControlName="version">
+            <mat-option *ngFor="let version of state?.selectedApp?.Versions"
+                        [value]="version">
+              {{version.Version}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-row__item orm-row__item--last">
+      </div>
+    </div>
+    <!-- version -->
+
+    <!-- build -->
+    <div class="form-row">
+      <div class="form-row__item form-row__item--label">
+        <h4>Build</h4>
+      </div>
+      <div class="form-row__item form-row__item--body">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Select Build..." formControlName="build">
+            <mat-option *ngFor="let build of state.version.Builds"
+                        [value]="build">
+              {{build?.Build}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-row__item orm-row__item--last">
+      </div>
+    </div>
+    <!-- build -->
+    <!-- version -->
+    <div class="form-row">
+      <div class="form-row__item form-row__item--label">
+        <h4>Comment</h4>
+      </div>
+      <div class="form-row__item form-row__item--body">
+        {{ state?.build?.Comment }}
+      </div>
+      <div class="form-row__item orm-row__item--last">
+      </div>
+    </div>
+    <!-- version -->
+    <div class="form-row form-row--buttons">
+      <div class="form-row__item form-row__item--label">
+          <button class="upload-button" color="accent" mat-button mat-raised-button>
+              Upload configuration
+              <label for="upload">
+                  <input type="file" id="upload" accept=".json" (change)="onFileChange($event)">
+              </label>
+            </button>
+      </div>
+      <div class="form-row__item form-row__item--body">
+          <button mat-button mat-raised-button color="accent" (click)="onButtonClick('download')">
+              Download configuration
+          </button>
+      </div>
+      <div class="form-row__item orm-row__item--last">
+          <button mat-button mat-raised-button color="accent" (click)="onButtonClick('edit')">
+              Edit users
+          </button>
+      </div>
+    </div>
+    <div class="form-row form-row--buttons">
+      <div class="form-row__item">
+          <button color="primary" mat-button mat-raised-button (click)="onButtonClick('reset')">
+            Reset
+          </button>
+      </div>
+    </div>
+  </ng-container>
+</form>

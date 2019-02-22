@@ -1,0 +1,7 @@
+<ag-base-layout [title]="'Create Application'">
+  <ag-create-form
+    [pending]="isLoading"
+    (submitted)="onSubmit($event)"
+    (cancel)="onCancelClick()">
+  </ag-create-form>
+</ag-base-layout>

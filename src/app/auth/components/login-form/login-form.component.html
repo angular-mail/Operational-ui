@@ -1,0 +1,41 @@
+<mat-card class="login-form">
+  <mat-card-title>
+    <h2 class="mat-title">Welcome to SomeCompany!</h2>
+  </mat-card-title>
+  <mat-card-content>
+    <ng-content></ng-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+      <label for="email">Email</label>
+      <mat-form-field [floatLabel]="'always'" class="full-width form-field">
+        <input matInput placeholder="address@gmail.com" formControlName="email"
+               id="email"
+               (focus)="onFocus(email)" [errorStateMatcher]="emailMatcher" />
+        <mat-error
+                   *ngIf="email.hasError('email') && !email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <label for="password">Password</label>
+      <mat-form-field [floatLabel]="'always'" class="full-width">
+        <input matInput type="password" formControlName="password"
+               (focus)="onFocus(password)" placeholder="***********"
+               [errorStateMatcher]="passwordMatcher" />
+        <mat-error
+                   *ngIf="password.hasError('minlength') && !password.hasError('required')">
+          Minimum password length is
+          {{ password.getError('minlength').requiredLength }} symbols
+        </mat-error>
+        <mat-error *ngIf="password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="form-button-wrapper">
+        <button type="submit" mat-raised-button color="primary">Login</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

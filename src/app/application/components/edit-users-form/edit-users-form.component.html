@@ -1,0 +1,60 @@
+<form #editNgForm="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- select-app -->
+    <div class="form-row form-row--double">
+        <div class="form-row__item form-row__item--label">
+            <h4>Add new User</h4>
+        </div>
+        <div class="form-row__item form-row__item--body">
+            <mat-form-field [floatLabel]="'always'"
+                            class="full-width form-field">
+                <input matInput placeholder="user.anagog.com"
+                       formControlName="name" id="name"
+                       (focus)="onFocus(name)"
+                       [errorStateMatcher]="nameMatcher" />
+                <mat-error
+                           *ngIf="name.hasError('minlength') && !name.hasError('required')">
+                    Minimum username length is
+                    {{ name.getError('minlength').requiredLength }} symbols
+                </mat-error>
+                <mat-error *ngIf="name.hasError('required')">
+                    name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row form-row--double form-row--checkboxes">
+        <div class="form-row__item form-row__item--label">
+            <h4>Can update</h4>
+        </div>
+        <div class="form-row__item form-row__item--body">
+            <mat-checkbox class="example-margin" formControlName="canUpdate">
+            </mat-checkbox>
+        </div>
+    </div>
+    <div class="form-row form-row--double form-row--checkboxes">
+        <div class="form-row__item form-row__item--label">
+            <h4>Can delete</h4>
+        </div>
+        <div class="form-row__item form-row__item--body">
+            <mat-checkbox class="example-margin" formControlName="canDelete">
+            </mat-checkbox>
+        </div>
+    </div>
+    <div class="form-row form-row--double form-row--checkboxes">
+        <div class="form-row__item form-row__item--label">
+            <h4>Can delete Users</h4>
+        </div>
+        <div class="form-row__item form-row__item--body">
+            <mat-checkbox class="example-margin" formControlName="canAddUsers">
+            </mat-checkbox>
+        </div>
+    </div>
+    <div class="form-button-wrapper">
+        <button type="submit" mat-raised-button color="primary">Add user</button>
+    </div>
+    <div class="remove-user-button">
+            <button type="button" [disabled]="!canDelete" (click)="onDelete()" mat-raised-button
+            color="warn">Delete Selected User</button>
+    </div>
+
+</form>

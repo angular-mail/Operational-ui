@@ -1,0 +1,26 @@
+<nav class="navbar container">
+  <a class="navbar__logo" mat-button routerLink="/">
+    <mat-icon class="navbar__icon navbar__icon--dashboard">dashboard</mat-icon>
+    <span class="navbar__title">Operational UI</span>
+  </a>
+
+  <ng-container *ngIf="user">
+    <a class="navbar__service" mat-button>
+      Manage Server Status
+      <mat-icon class="navbar__icon">wb_sunny</mat-icon>
+    </a>
+    <a class="navbar__service" mat-button>
+      Consume Server Status
+      <mat-icon class="navbar__icon">wb_sunny</mat-icon>
+    </a>
+    <a class="navbar__service" mat-button>
+      Reports Server Status
+      <mat-icon class="navbar__icon">wb_sunny</mat-icon>
+    </a>
+    <div class="flex-spacer"></div>
+    <div class="navbar__user">
+      Welcome, {{user.firstName}}!
+    </div>
+    <button mat-button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
+  </ng-container>
+</nav>

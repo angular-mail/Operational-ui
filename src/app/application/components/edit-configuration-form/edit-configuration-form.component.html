@@ -1,0 +1,67 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <h2 class="main-title">
+    Operational
+  </h2>
+
+  <div class="cofiguration-row" [formGroupName]="group"
+       *ngFor="let group of groups">
+    <div class="cofiguration-row__item cofiguration-row__item--1">
+      <h2 class="group-title">{{ group }}</h2>
+      <div class="cofiguration-row__item cofiguration-row__item-1"
+           *ngFor="let item of groupControls[group]">
+        <span [ngSwitch]="item.type">
+          <ng-container *ngSwitchCase="'checkbox'">
+            <mat-checkbox [formControlName]="item.name">
+              {{ item.label }}
+            </mat-checkbox>
+          </ng-container>
+          <ng-container *ngSwitchCase="'formGroup'">
+            <div [formGroupName]="item.name">
+              <h2>{{ item.name }}</h2>
+              <div class="cofiguration-row__item cofiguration-row__item-1"
+                   *ngFor="let nestedItem of item.controls">
+                <span [ngSwitch]="nestedItem.type">
+                  <ng-container *ngSwitchCase="'checkbox'">
+                    <mat-checkbox [formControlName]="nestedItem.name">
+                      {{ nestedItem.label }}</mat-checkbox>
+                  </ng-container>
+                  <div class="selectbox" *ngSwitchCase="'selectbox'">
+                    <label>{{ nestedItem.label }}</label>
+                    <mat-form-field>
+                      <mat-select [formControlName]="nestedItem.name"
+                                  placeholder="1">
+                        <mat-option *ngFor="let selectItem of nestedItem.data"
+                                    [value]="selectItem">
+                          {{selectItem}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngSwitchCase="'selectbox'">
+            <mat-form-field>
+              <label>{{ item.label }}</label>
+              <mat-select [formControlName]="item.name" placeholder="1">
+                <mat-option *ngFor="let item of item.data" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- select-app -->
+  <div class="form-button-wrapper">
+    <button type="submit" mat-raised-button color="primary">Save
+      Configuration</button>
+    <button type="button" (click)="onUpload()" mat-raised-button
+            color="accent">Upload configuration</button>
+  </div>
+  <ng-content></ng-content>
+</form>

@@ -1,0 +1,23 @@
+printWidth: 120
+tabWidth: 4
+singleQuote: true
+trailingComma: "none"
+bracketSpacing: false
+overrides:
+- files: "*.ts"
+  options:
+    parser: "typescript"
+- files: "*.{scss,css}"
+  options:
+    parser: "css"
+    tabWidth: 2
+- files: "*.json"
+  options:
+    parser: "json"
+    tabWidth: 2
+    printWidth: 1000
+- files: ".*.json"
+  options:
+    parser: "json"
+    tabWidth: 2
+    printWidth: 120

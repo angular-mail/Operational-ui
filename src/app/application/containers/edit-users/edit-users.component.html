@@ -1,0 +1,20 @@
+<ag-base-layout [title]="'Edit users'">
+    <div class="app-name">Application name: {{ appName }} </div>
+    <div class="edit-users-layout">
+        <ag-edit-users-list
+            [users]="users"
+            (selected)="onUserSelect($event)">
+            <div class="form-button-wrapper form-button-wrapper--left">
+                <button type="submit" (click)="onBackButtonClick()" mat-raised-button>Back</button>
+            </div>
+        </ag-edit-users-list>
+        <div class="control-container">
+            <ag-edit-users-form
+                [pending]="isLoading"
+                [activeItemId]="activeItemId"
+                (delete)="onUserDelete()"
+                (submitted)="onUserAdd($event)">
+            </ag-edit-users-form>
+        </div>
+    </div>
+</ag-base-layout>
