@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter, ViewChild} from '@angular/core';
-import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators, NgForm, AbstractControl } from '@angular/forms';
 import { BaseAppUser } from '../../models/app-user';
 import { CustomErrorStateMatcher } from 'src/app/shared/form-helpers/error-state-matcher';
 
@@ -43,11 +43,11 @@ export class EditUsersFormComponent implements OnInit {
         return this.form && this.form.get('name');
     }
 
-    onFocus(control: FormControl) {
+    onFocus(control: FormControl | AbstractControl) {
         this.resetState(control);
     }
 
-    resetState(control: FormControl) {
+    resetState(control: FormControl | AbstractControl) {
         control.markAsPristine();
         control.markAsUntouched();
     }

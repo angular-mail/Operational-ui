@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormGroup, FormControl, Validators, AbstractControl} from '@angular/forms';
 import {CustomErrorStateMatcher} from 'src/app/shared/form-helpers/error-state-matcher';
 
 @Component({
@@ -37,11 +37,11 @@ export class CreateFormComponent implements OnInit {
         return this.form && this.form.get('appName');
     }
 
-    onFocus(control: FormControl) {
+    onFocus(control: FormControl | AbstractControl) {
         this.resetState(control);
     }
 
-    resetState(control: FormControl) {
+    resetState(control: FormControl | AbstractControl) {
         control.markAsPristine();
         control.markAsUntouched();
     }

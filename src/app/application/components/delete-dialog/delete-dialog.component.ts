@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Inject} from '@angular/core';
-import {FormGroup, Validators, FormControl} from '@angular/forms';
+import {FormGroup, Validators, FormControl, AbstractControl} from '@angular/forms';
 import {CustomErrorStateMatcher} from 'src/app/shared/form-helpers/error-state-matcher';
 import {matchNameValidator} from '../../validators/match-name.validator';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -29,11 +29,11 @@ export class DeleteDialogComponent implements OnInit {
         return this.form && this.form.get('appName');
     }
 
-    onFocus(control: FormControl) {
+    onFocus(control: FormControl | AbstractControl) {
         this.resetState(control);
     }
 
-    resetState(control: FormControl) {
+    resetState(control: FormControl | AbstractControl) {
         control.markAsPristine();
         control.markAsUntouched();
     }
