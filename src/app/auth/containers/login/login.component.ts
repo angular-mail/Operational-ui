@@ -23,8 +23,6 @@ export class LoginComponent extends BaseComponent implements OnInit {
         this.authService
             .signIn(formValues)
             .pipe(takeUntil(this.ngUnsubscribe))
-            .subscribe(() => {
-                this.informService.showSuccessMessage(`Welcome ${formValues.email}`);
-            });
+            .subscribe();
     }
 }

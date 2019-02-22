@@ -2,8 +2,24 @@
   display: flex;
   justify-content: center;
   overflow: auto;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
 }
 
 form {
   min-width: 70rem;
+
+  @media screen and (max-width: 800px) {
+    min-width: auto;
+    .form-row__item {
+      display: block;
+    }
+    button {
+      width: 100%;
+      display: block;
+      margin-bottom: 1rem;
+    }
+  }
 }
