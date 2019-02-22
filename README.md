@@ -1,11 +1,23 @@
 # OperationalClientUi
 
 ## Login Page
-### Username could be any email adress, except _error@gmail.com_
 
-## Configuration ()
-### Upload format - json
-### Download - zip
+* Username could be any email adress, except _error@gmail.com_
+* After logout all data about created apps will be removed
+
+## User Page
+* Users list only in memory
+* Server requests to add / remove user are mocked
+
+
+## Configuration (not all files include, only Operational partly)
+ 1. Upload format - json
+ 2. Download format - zip
+
+## Server
+* There is no server in the project. All requests are intercepted by custom "mockBackendInterceptor".
+* JWTtoken authorization is also mocked (token adds to every request after sign in).
+* There is only 1 configuration file on "server".
 
 
 
