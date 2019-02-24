@@ -10,6 +10,7 @@ import {CoreModule} from './core';
 import {AuthModule} from './auth/auth.module';
 import {StoreModule} from '@ngrx/store';
 import {reducers, metaReducers} from './reducers';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
@@ -23,6 +24,10 @@ import {AppEffects} from './app.effects';
         CommonModule,
         HttpClientModule,
         CoreModule,
+        /**
+         * @ngrx/router-store keeps router state up-to-date in the store.
+         */
+        StoreRouterConnectingModule.forRoot(),
         BrowserAnimationsModule,
         StoreModule.forRoot(reducers, {metaReducers}),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
