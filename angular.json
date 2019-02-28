@@ -34,10 +34,8 @@
                         "production": {
                             "fileReplacements": [
                                 {
-                                    "replace":
-                                        "src/environments/environment.ts",
-                                    "with":
-                                        "src/environments/environment.prod.ts"
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
                                 }
                             ],
                             "optimization": true,
@@ -66,8 +64,7 @@
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget":
-                                "operational-client-ui:build:production"
+                            "browserTarget": "operational-client-ui:build:production"
                         }
                     }
                 },
@@ -114,8 +111,7 @@
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget":
-                                "operational-client-ui:serve:production"
+                            "devServerTarget": "operational-client-ui:serve:production"
                         }
                     }
                 },
@@ -129,5 +125,8 @@
             }
         }
     },
-    "defaultProject": "operational-client-ui"
+    "defaultProject": "operational-client-ui",
+    "cli": {
+        "defaultCollection": "@ngrx/schematics"
+    }
 }

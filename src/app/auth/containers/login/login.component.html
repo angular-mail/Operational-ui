@@ -1,4 +1,6 @@
 <h1 class="page-title">Operation Client UI</h1>
 
-<ag-login-form (submitted)="onFormSubmit($event)" [pending]="pending">
+<ag-login-form
+    (submitted)="onFormSubmit($event)"
+    [pending]="pending$ | async">
 </ag-login-form>

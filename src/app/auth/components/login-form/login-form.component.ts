@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {FormGroup, FormControl, Validators, AbstractControl} from '@angular/forms';
 import {CustomErrorStateMatcher} from '../../../shared/form-helpers/error-state-matcher';
+import {LoginFormValues} from '@app/auth/models/login-form-values.interface';
 
 @Component({
     selector: 'ag-login-form',

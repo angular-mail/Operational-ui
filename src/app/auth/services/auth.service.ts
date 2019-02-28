@@ -1,23 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Observable, BehaviorSubject} from 'rxjs';
-import {tap} from 'rxjs/operators';
 import {ApiService} from 'src/app/core/services/api.service';
 import {User} from '../models/user.model';
 import {JwtService} from 'src/app/core/services/jwt-token.service';
 import {Router} from '@angular/router';
 import {LocalStorageService} from 'src/app/core/services/local.storage.service';
 import {LocalStorageKeys} from 'src/app/core/models/local-storage-keys.enum';
-import {InformService} from 'src/app/core/services/inform.service';
+import {LoginFormValues} from '../models/login-form-values.interface';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
     static signInUrl = '/sign-in';
     logoutUrl = '/login';
-    mainPageUrl = 'app';
     _user: User;
     authorized = new BehaviorSubject<User>(this.user);
 
-    constructor(private api: ApiService, private jwtService: JwtService, private router: Router) {}
+    constructor(private api: ApiService, private router: Router, private jwtService: JwtService) {}
 
     public signIn(
         credentials: LoginFormValues
@@ -25,14 +23,7 @@ export class AuthService {
         token: string;
         user: User;
     }> {
-        return this.api.post(AuthService.signInUrl, credentials).pipe(
-            tap(data => {
-                const {user, token} = data;
-                this.jwtService.token = token;
-                this.user = user;
-                this.router.navigate([this.mainPageUrl]);
-            })
-        );
+        return this.api.post(AuthService.signInUrl, credentials);
     }
 
     set user(user: User) {

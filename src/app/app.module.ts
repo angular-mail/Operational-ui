@@ -8,6 +8,13 @@ import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {CoreModule} from './core';
 import {AuthModule} from './auth/auth.module';
+import {StoreModule} from '@ngrx/store';
+import {reducers, metaReducers} from './reducers';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
+import {EffectsModule} from '@ngrx/effects';
+import {AppEffects} from './app.effects';
 
 @NgModule({
     imports: [
@@ -17,7 +24,14 @@ import {AuthModule} from './auth/auth.module';
         CommonModule,
         HttpClientModule,
         CoreModule,
-        BrowserAnimationsModule
+        /**
+         * @ngrx/router-store keeps router state up-to-date in the store.
+         */
+        StoreRouterConnectingModule.forRoot(),
+        BrowserAnimationsModule,
+        StoreModule.forRoot(reducers, {metaReducers}),
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
+        EffectsModule.forRoot([AppEffects])
     ],
     providers: [],
     bootstrap: [AppComponent]
