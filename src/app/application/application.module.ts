@@ -11,7 +11,11 @@ import {CreateFormComponent} from './components/create-form/create-form.componen
 import {DeleteDialogComponent} from './components/delete-dialog/delete-dialog.component';
 import {EditUsersListComponent} from './components/edit-users-list/edit-users-list.component';
 import {EditUsersFormComponent} from './components/edit-users-form/edit-users-form.component';
-import { EditConfigurationFormComponent } from './components/edit-configuration-form/edit-configuration-form.component';
+import {EditConfigurationFormComponent} from './components/edit-configuration-form/edit-configuration-form.component';
+import {StoreModule} from '@ngrx/store';
+import * as fromUsers from './reducers/users.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {UsersEffects} from './effects/users.effects';
 
 @NgModule({
     declarations: [
@@ -26,7 +30,12 @@ import { EditConfigurationFormComponent } from './components/edit-configuration-
         EditUsersFormComponent,
         EditConfigurationFormComponent
     ],
-    imports: [ApplicationRoutingModule, SharedModule],
+    imports: [
+        ApplicationRoutingModule,
+        SharedModule,
+        StoreModule.forFeature('users', fromUsers.reducer),
+        EffectsModule.forFeature([UsersEffects])
+    ],
     entryComponents: [DeleteDialogComponent]
 })
 export class ApplicationModule {}
