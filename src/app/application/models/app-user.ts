@@ -1,14 +1,13 @@
 export interface BaseAppUser {
-    id?: number;
+    id?: string | number;
     name: string;
     canDelete: boolean;
     canUpdate: boolean;
     canAddUsers: boolean;
 }
 
-
 export class AppUser implements BaseAppUser {
-    id: number;
+    id: string | number;
     name: string;
     canDelete: boolean;
     canUpdate: boolean;

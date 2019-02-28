@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, ElementRef, HostListener, Output, EventEmitter, Input} from '@angular/core';
 import {KEYCODE} from 'src/app/core/models/keycode.enum';
 
-import { AppUser } from '../../models/app-user';
+import {AppUser} from '../../models/app-user';
 
 @Component({
     selector: 'ag-edit-users-list',
@@ -11,7 +11,7 @@ import { AppUser } from '../../models/app-user';
 export class EditUsersListComponent implements OnInit {
     _activeItemId = null;
     @Output() selected = new EventEmitter<AppUser>();
-    @Input('users') users: AppUser[];
+    @Input() users: AppUser[];
     @ViewChild('container') usersContainer: ElementRef;
 
     @HostListener('window:click', ['$event.target'])
@@ -23,7 +23,14 @@ export class EditUsersListComponent implements OnInit {
 
     @HostListener('document:keydown', ['$event'])
     onKeyPress(event: KeyboardEvent) {
-        switch (event.keyCode) {
+        let code;
+
+        if (event.keyCode !== undefined) {
+            // tslint:disable-next-line
+            code = event.keyCode;
+        }
+
+        switch (code) {
             case KEYCODE.BOTTOM:
                 event.preventDefault();
                 this.setNext();
@@ -43,7 +50,7 @@ export class EditUsersListComponent implements OnInit {
             return;
         }
         let activeItemIndex = this.users.findIndex(item => item.id === this.activeItemId);
-        const nextIndex = activeItemIndex < this.users.length - 1 ?  ++activeItemIndex : activeItemIndex;
+        const nextIndex = activeItemIndex < this.users.length - 1 ? ++activeItemIndex : activeItemIndex;
         this.activeItemId = this.users[nextIndex].id;
     }
 

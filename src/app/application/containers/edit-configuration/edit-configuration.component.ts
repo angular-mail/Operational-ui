@@ -14,7 +14,7 @@ import {InformService} from 'src/app/core/services/inform.service';
 })
 export class EditConfigurationComponent extends BaseComponent implements OnInit {
     configuration: Operational;
-    title = this.route.snapshot.params['id'];
+    title = this.route.snapshot.params.id;
     constructor(
         private applicationService: ApplicationService,
         private router: Router,
@@ -52,16 +52,14 @@ export class EditConfigurationComponent extends BaseComponent implements OnInit 
     }
 
     normalizeConfiguration(operational: Operational) {
-        const Operational = {
+        const configuration = {
             ...this.applicationService.activeConfiguration.Operational,
             ...operational
         };
 
-        const configuration = {
+        return {
             ...this.applicationService.activeConfiguration,
-            Operational
+            Operational: configuration
         };
-
-        return configuration;
     }
 }

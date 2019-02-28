@@ -17,7 +17,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "npm run lint && lint-staged"
         }
     },
     "private": true,
@@ -37,6 +37,7 @@
         "@ngrx/router-store": "^7.2.0",
         "@ngrx/store": "^7.2.0",
         "@ngrx/store-devtools": "^7.2.0",
+        "angular2-uuid": "^1.1.1",
         "core-js": "^2.5.4",
         "file-saver": "^2.0.1",
         "hammerjs": "^2.0.8",
