@@ -13,7 +13,7 @@ import {
     MatCheckboxModule,
     MatRippleModule
 } from '@angular/material';
-import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 const MODULES = [
     MatInputModule,
@@ -24,7 +24,7 @@ const MODULES = [
     MatDialogModule,
     MatSelectModule,
     MatSnackBarModule,
-    ScrollDispatchModule,
+    ScrollingModule,
     MatCheckboxModule,
     MatRippleModule
 ];

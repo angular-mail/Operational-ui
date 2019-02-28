@@ -6,7 +6,7 @@ import {configurationResponse} from '../mock-data/configuration-response';
 import {LocalStorageKeys} from '../models/local-storage-keys.enum';
 import {LocalStorageService} from '../services/local.storage.service';
 import {AppResponse, DefaultApp} from 'src/app/application/models/application.model';
-import { AppUser } from 'src/app/application/models/app-user';
+import {AppUser} from 'src/app/application/models/app-user';
 
 const signInMock = new MockReponse({
     urls: ['/sign-in'],
@@ -58,7 +58,7 @@ const newApplicationMock = new MockReponse({
         console.log('--new app request', app);
         const appResponse: AppResponse = LocalStorageService.get(LocalStorageKeys.APPS) || applicationsResponse;
         const appName = JSON.parse(app).appName;
-        if (!appResponse.Apps.some(app => app.AppName === appName)) {
+        if (!appResponse.Apps.some(appItem => appItem.AppName === appName)) {
             appResponse.Apps.push(new DefaultApp(appName));
             LocalStorageService.save(LocalStorageKeys.APPS, appResponse);
             return new HttpResponse({status: 200, body: appResponse});
@@ -81,7 +81,7 @@ const removeApplicationMock = new MockReponse({
         console.log('--new app delete request', app);
         const appResponse: AppResponse = LocalStorageService.get(LocalStorageKeys.APPS) || applicationsResponse;
         const appName = JSON.parse(app).appName;
-        const appIndex = appResponse.Apps.findIndex(app => app.AppName === appName);
+        const appIndex = appResponse.Apps.findIndex(appItem => appItem.AppName === appName);
         if (appIndex > -1) {
             appResponse.Apps.splice(appIndex, 1);
             LocalStorageService.save(LocalStorageKeys.APPS, appResponse);
@@ -117,7 +117,6 @@ const configurationSaveMock = new MockReponse({
     },
     match: 'full'
 });
-
 
 const mockRemoveUser = new MockReponse({
     urls: ['/user-remove'],

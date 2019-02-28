@@ -21,18 +21,30 @@ export class ApiService {
     }
 
     get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-        return this.http.get(`${path}`, {params}).pipe(catchError(this.formatErrors), delay(this.timeout));
+        return this.http.get(`${path}`, {params}).pipe(
+            catchError(this.formatErrors),
+            delay(this.timeout)
+        );
     }
 
-    put(path: string, body: Object = {}): Observable<any> {
-        return this.http.put(`${path}`, JSON.stringify(body)).pipe(catchError(this.formatErrors), delay(this.timeout));
+    put(path: string, body: any = {}): Observable<any> {
+        return this.http.put(`${path}`, JSON.stringify(body)).pipe(
+            catchError(this.formatErrors),
+            delay(this.timeout)
+        );
     }
 
-    post(path: string, body: Object = {}): Observable<any> {
-        return this.http.post(`${path}`, JSON.stringify(body)).pipe(catchError(this.formatErrors), delay(this.timeout));
+    post(path: string, body: any = {}): Observable<any> {
+        return this.http.post(`${path}`, JSON.stringify(body)).pipe(
+            catchError(this.formatErrors),
+            delay(this.timeout)
+        );
     }
 
     delete(path): Observable<any> {
-        return this.http.delete(`${path}`).pipe(catchError(this.formatErrors), delay(this.timeout));
+        return this.http.delete(`${path}`).pipe(
+            catchError(this.formatErrors),
+            delay(this.timeout)
+        );
     }
 }

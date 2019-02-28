@@ -3,6 +3,7 @@
   "rules": {
     "directive-selector": [true, "attribute", "ag", "camelCase"],
     "component-selector": [true, "element", "ag", "kebab-case"],
-    "indent": [true, "spaces", 4]
+    "indent": [true, "spaces", 4],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
   }
 }
