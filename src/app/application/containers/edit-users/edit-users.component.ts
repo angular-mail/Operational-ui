@@ -7,6 +7,7 @@ import {LoaderService} from 'src/app/core/services/loader.service';
 import {takeUntil, finalize} from 'rxjs/operators';
 import {InformService} from 'src/app/core/services/inform.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import {UUID as uuidGenerator} from 'angular2-uuid';
 
 @Component({
     selector: 'ag-edit-users',
@@ -17,7 +18,7 @@ export class EditUsersComponent extends BaseComponent implements OnInit {
     @ViewChild(EditUsersFormComponent) editUsersFormComponent: EditUsersFormComponent;
     users = Array.from({length: 5}).map((_, i) => {
         return new AppUser({
-            id: i,
+            id: uuidGenerator.UUID(),
             name: `user${i}.anagog`,
             canDelete: false,
             canUpdate: false,
@@ -52,7 +53,7 @@ export class EditUsersComponent extends BaseComponent implements OnInit {
         this.applicationService
             .addUser(
                 new AppUser({
-                    id: this.users.length,
+                    id: uuidGenerator.UUID(),
                     ...user
                 })
             )

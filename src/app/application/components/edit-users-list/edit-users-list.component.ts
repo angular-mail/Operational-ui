@@ -25,10 +25,7 @@ export class EditUsersListComponent implements OnInit {
     onKeyPress(event: KeyboardEvent) {
         let code;
 
-        if (event.key !== undefined) {
-            code = event.key;
-            // tslint:disable-next-line
-        } else if (event.keyCode !== undefined) {
+        if (event.keyCode !== undefined) {
             // tslint:disable-next-line
             code = event.keyCode;
         }
